@@ -52,7 +52,7 @@ const AI = (humanplayer) => {
            if( ! tempShip.isSunk ) return hit;
            return null;
         })
-        return x.filter(s=>s);
+        return x.filter(s=>typeof s === 'number');
     }
     
      // Find Next shot when there are any hits on unsunken ships ==> calls either linked attack(1+) or potential neighbor attack(1)

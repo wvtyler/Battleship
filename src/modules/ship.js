@@ -42,17 +42,19 @@ class ship{
         }
     }
     // Load ship icons into HTML and place accordingly according to board (query selector??)
-    loadShipIcon(){
+    loadShipIcon(boardSelector){
+        const pcPlayer = boardSelector == '.pc-board';
+        const iconId = `${this.name}-${pcPlayer ? 'pc-' : ""}icon`;
 
         if( this.location.length === 0 ) return;
         const location = this.location[0];
-        const cell = document.querySelector(`#cell-${location}`)
+        const cell = document.querySelector(`#cell-${pcPlayer ? 'pc-' : ""}${location}`)
         const cord = (cell.getBoundingClientRect())
         //For calling upon resizing a window.. if it exists, modify exisiting ship, else create a new one
-        const iconImg = (!document.querySelector(`#${this.name}-icon`)) ? document.createElement('img') : (document.querySelector(`#${this.name}-icon`));
+        const iconImg = (!document.querySelector(`#${iconId}`)) ? document.createElement('img') : (document.querySelector(`#${iconId}`));
         iconImg.src = this.icon;
         iconImg.classList.add('ship-icon')
-        iconImg.id = `${this.name}-icon`
+        iconImg.id = iconId;
         iconImg.style.position = 'absolute';
         // If Y Axis change left attr, rotate
         if(!this.xAxis) {
@@ -62,8 +64,8 @@ class ship{
         
         iconImg.style.top = `${cord.top}px`;
         
-        if (!document.querySelector(`#${this.name}-icon`)){
-            const boardDiv = document.querySelector('.board')
+        if (!document.querySelector(`#${iconId}`)) {
+            const boardDiv = document.querySelector(boardSelector)
             
             boardDiv.append(iconImg)
         }

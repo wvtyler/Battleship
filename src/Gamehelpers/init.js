@@ -181,7 +181,7 @@ function init(human, gameControllerCallback) {
                 human.ships[shipsPlaced].location.map(
                     (index) => arr[index].src=water)
                 //Load ship icon in correct place (maybe in boardLoader?)
-                human.ships[shipsPlaced].loadShipIcon();
+                human.ships[shipsPlaced].loadShipIcon('.board');
                 shipsPlaced++;
                 placementController()
             }

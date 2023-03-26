@@ -44,7 +44,7 @@
     text-align: center;
     z-index: 5;
     height: 50px;
-    width: 200px;
+    width: 175px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -56,6 +56,7 @@
     border-color: white;
     overflow: hidden;
     padding-top: 5px;
+    cursor:pointer;
 
 
     
@@ -231,7 +232,7 @@
 }
 
 .red-filter{
-    filter: invert(23%) sepia(98%) saturate(4757%) hue-rotate(357deg) brightness(88%) contrast(128%);
+    filter: invert(23%) sepia(98%) saturate(4757%) hue-rotate(357deg) brightness(60%) contrast(128%);
 }
 .missed-attack{
     color: blue;

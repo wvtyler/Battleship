@@ -14,6 +14,8 @@ let pcAI = AI(computerPlayer);
 const gameController = () => {
     console.log('GAME CONTROLLER!!!')
 
+    let isGameCompleted = false;
+
 
     window.addEventListener('resize', resizeListener)
     startButton(start);
@@ -25,12 +27,7 @@ const gameController = () => {
 
     }
 
-
-
-
-}
-
-//Called after init is finished
+    //Called after init is finished
 function postInitCallback(){
     //Randomly Place AI Ships
     pcAI.placeShips(computerPlayer);
@@ -44,6 +41,7 @@ function postInitCallback(){
 
         const restart = () => {
             console.log('RESTARTO!!!')
+            isGameCompleted = false;
             humanPlayer = new player();
             computerPlayer = new player();
             pcAI = AI(computerPlayer);
@@ -51,18 +49,30 @@ function postInitCallback(){
         }
 
         function postGameCallback(result){
-        console.log('games over')
+        console.log('games over');
+        isGameCompleted = true;
+        computerPlayer.ships.map( (ship) => {
+            ship.loadShipIcon('.pc-board');
+        });
         postgame(result, restart);
     }
 }
-    //Listens for window resize and adjusts ship placement accordingly
-    function resizeListener(){
-
+    // Listens for window resize and adjusts ship placement accordingly
+    function resizeListener() {
         humanPlayer.ships.map( (ship) => {
-            ship.loadShipIcon() 
-
+            ship.loadShipIcon('.board');
         });
+
+        if (isGameCompleted) {
+            computerPlayer.ships.map( (ship) => {
+                ship.loadShipIcon('.pc-board');
+            });
+        }
     }
 
 
+
+
+
+}
 export default gameController;

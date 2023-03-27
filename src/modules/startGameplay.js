@@ -68,7 +68,7 @@ const startGameplay= (gameEndCallback, humanPlayer, computerPlayer) => {
     const fireShotListener = (e) => {
         const pcBoard = document.querySelector('.pc-board')
         pcBoard.classList.add('no-pointer-events')
-        const div = document.querySelector(`.cell-2${e.target.id}`)
+
         interpretAttack(e.target);
             clearInfo();
             setInfo();
@@ -103,7 +103,7 @@ const startGameplay= (gameEndCallback, humanPlayer, computerPlayer) => {
     const interpretAttack = (cell) => {
 
         
-        const cellNum = cell.id.slice(6)
+        const cellNum = cell.id.slice(8); // breh ...
 
         computerPlayer.gameboard.fireShot(cellNum)
         //If player hits pc ship

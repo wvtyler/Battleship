@@ -8,7 +8,7 @@ function boardLoader(cb, pcPlayer){
         const cell = document.createElement('img');
         cell.classList.add('cell');
         cell.src = water;
-        cell.id = `cell-${pcPlayer ? '2' : ""}${i}`;
+        cell.id = `cell-${pcPlayer ? 'pc-' : ""}${i}`;
         board.appendChild(cell);
         if(cb){
         cell.addEventListener('click', function func(e){
